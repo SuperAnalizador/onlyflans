@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'content' %}
+
+<h1 class="mt-5">Flanes Públicos</h1>
+<div class="row">
+    {% for flan in flanes %}
+    <div class="col-sm-3 mb-3">
+        <div class="card h-100">
+          <a href="{% url 'flan_details' flan.id %}">
+            <div class="bg-image hover-overlay hover-zoom hover-shadow ripple">
+                <img class="card-img-top" src="{{ flan.imagen }}" alt="{{ flan.name }}" style="object-fit: cover; height: 200px;">
+                <a href="#!">
+                    <div class="mask" style="background-color: hsla(195, 83%, 58%, 0.2)"></div>
+                </a>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ flan.name }}</h5>
+                <p class="card-text">{{ flan.descipcion }}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-center">
+                <a href="#" class="btn btn-primary">
+                  <img src="{% static 'img/carrito.png' %}" alt="carrito" width="20" height="20"> 
+                  Agregar a carrito
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock 'content' %}
+
+
